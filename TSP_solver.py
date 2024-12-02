@@ -104,10 +104,14 @@ class TSPConstraintGenerationSolver:
             if subcircuit is None:
                 break
 
-            # if we have a subcircuit, add a constraint to avoid it
+            # if we have a subcircuit, add a constraint to avoid it sum(x_ij) <= 1 (6.1.d)
             subtour_nodes = list(subcircuit)
-            model += pulp.lpSum(x[i,j] for i in subtour_nodes for j in subtour_nodes if i != j and self.distance_matrix[i][j] < np.inf) <= len(subtour_nodes) - 1
-
+            # model += pulp.lpSum(x[i,j] for i in subtour_nodes for j in subtour_nodes if i != j and self.distance_matrix[i][j] < np.inf) <= len(subtour_nodes) - 1
+            
+            # Compute the cities that are not in the subcircuit
+            not_subtour_nodes = [i for i in range(self.n) if i not in subtour_nodes]
+            model += pulp.lpSum(x[i,j] for i in subtour_nodes for j in not_subtour_nodes if i != j and self.distance_matrix[j][i] < np.inf) >= 1
+        
         # Reconstruct optimal tour and total distance
         tour = []
         current = 0
@@ -134,7 +138,7 @@ if __name__ == "__main__":
     from TSP_generator import generate_tsp_instance
 
     # Generate TSP instance
-    distance_matrix, _ = generate_tsp_instance(num_cities=10, seed=42)
+    distance_matrix, _ = generate_tsp_instance(num_cities=8, seed=4209)
 
     # Modify the distance matrix to represent a non-fully connected graph
     # For example, set some distances to np.inf to represent no direct connection

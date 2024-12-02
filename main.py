@@ -92,8 +92,6 @@ def main():
             elif distance_type == 2:
                 distance_type = 'random'
                 break
-            else:
-                print("Please enter a valid integer (1 or 2).")
         except ValueError:
             print("Invalid input. Please enter an integer.")
 

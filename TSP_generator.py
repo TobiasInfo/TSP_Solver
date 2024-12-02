@@ -39,7 +39,6 @@ def generate_tsp_instance(num_cities, seed=None, distance_type='euclidean'):
     elif distance_type == 'euclidean':
         # Generate random coordinates for cities
         coordinates = np.random.rand(num_cities, 2) * 100
-        
         # Compute the Euclidean distances between each city
         distance_matrix = np.zeros((num_cities, num_cities))
         for i in range(num_cities):
@@ -85,7 +84,7 @@ def visualize_tsp_graph(distance_matrix, coordinates):
 # Example usage
 if __name__ == "__main__":
     num_cities = 3
-    distance_matrix, coordinates = generate_tsp_instance(num_cities, distance_type='random')
+    distance_matrix, coordinates = generate_tsp_instance(num_cities, distance_type='euclidean')
     print(distance_matrix)
     visualize_tsp_graph(distance_matrix, coordinates)
   
