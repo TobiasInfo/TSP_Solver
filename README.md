@@ -33,14 +33,14 @@ pip install numpy pulp matplotlib networkx
 To run the project:
 
 1. Clone this repository.
-2. Run the main.py script:
+2. Run the `main.py` script:
 ```bash
     python main.py
 ```
 3. Follow the prompts to:
   - Enter the number of cities (minimum: 3).
   - Specify whether to use a random seed for reproducibility.
-  - Choose the type of distance generation (Euclidean or Random).
+  - Choose the type of distance generation (`Euclidean` or `Random`).
 
 The script will generate a TSP instance, solve it, and display the solution graphically.
 
@@ -56,16 +56,16 @@ Choose distance type (1.euclidean/2.random): 1
 
 2. Output:
 ```bash
-    Optimal Tour: [0, 3, 2, 4, 1]
-    Total Distance: 195.76
+Optimal Tour: [0, 3, 2, 1, 4]
+Total Distance: 227.34551867849092
 ```
 The optimal tour is displayed graphically alongside the original problem graph.
 
 ## Configuration
 
-  - Number of Cities: Customize the number of cities in the instance.
-  - Random Seed: Use a specific seed for reproducibility.
-  - Distance Type:
+  - **Number of Cities**: Customize the number of cities in the instance.
+  - **Random Seed**: Use a specific seed for reproducibility.
+  - **Distance Type**:
        - `Euclidean`: Distances are calculated using city coordinates in a 2D plane.
        - `Random`: Distances are randomly generated.
 
@@ -88,6 +88,8 @@ The optimal tour is displayed graphically alongside the original problem graph.
 - **Complete Graph**: Displays the original problem with cities and their connections.
 
 - **Optimal Tour**: Highlights the shortest path calculated by the solver.
+
+![image](https://github.com/user-attachments/assets/d79157fc-aab8-4118-9b8a-84c90ffb464b)
 
 ## License
 
